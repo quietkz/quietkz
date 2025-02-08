@@ -1,0 +1,288 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    
+    <link rel="icon" href="https://media.discordapp.net/attachments/1336790751161618553/1337201002599677953/quiet2.png?ex=67a7e67b&is=67a694fb&hm=c5bc8003b97844f5e915a336777e67548a45cfccda51dfcca07b7f835c8554c1&=&format=webp&quality=lossless&width=291&height=352" type="image/png">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            cursor: url(https://r2.guns.lol/50d80cb3-77fc-49a6-9a85-cd1317f16a47.cur) 16 16, auto !important;
+            height: 100vh;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+            background-color: #000;
+            transition: background-color 1s ease-in-out;
+        }
+
+        .initial-screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+            opacity: 1;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .initial-text {
+            font-size: 2.5rem;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        video.background-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        /* Removed typing effect animation */
+        .typewriter-text {
+            display: inline-block;
+            font-size: 3rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            white-space: nowrap;
+            overflow: hidden;
+            color: white;
+            position: relative;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 2px white, 0 0 5px white, 0 0 10px white;
+        }
+
+        .typewriter-text::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url(https://assets.guns.lol/sparkle_white.gif) repeat;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .content-slide-up {
+            animation: slideUp 1s ease-out forwards;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+
+.social-icon {
+    width: 50px;
+    height: 50px;
+    background-size: cover;
+    position: relative;
+    filter: invert(1) brightness(1000%) drop-shadow(0 0 5px white) drop-shadow(0 0 15px white) drop-shadow(0 0 25px white);
+    transition: transform 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: scale(1.1);
+    opacity: 0.8;
+}
+
+.social-icon::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(https://assets.guns.lol/sparkle_white.gif) repeat;
+    z-index: 1;
+    pointer-events: none;
+}
+
+
+        audio {
+            margin-top: 2rem;
+            border-radius: 10px;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+        }
+
+        /* Cursor Blinking Effect */
+        .cursor {
+            display: inline-block;
+            width: 5px;
+            height: 35px;
+            background-color: white;
+            margin-left: 5px;
+            animation: blink 0.8s step-end infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        /* Transparent Box for Name and Socials */
+        .socials-container {
+            display: inline-block;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 2rem;
+        }
+
+        .socials-container .typewriter-text {
+            font-size: 3.5rem;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 2px white, 0 0 5px white, 0 0 10px white;
+        }
+
+        .socials-container .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 1rem;
+        }
+
+        /* Glowing Effect for Description */
+        .description-text {
+            font-size: 1.5rem;
+            color: white;
+            text-align: center;
+            text-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white;
+            margin-top: 1.5rem;
+            font-weight: normal;
+        }
+
+    </style>
+    <meta property="og:title" content="q3os" />
+    <meta property="og:description" content="Stop lookin nigga click it." />
+    <meta property="og:image" content="https://media.discordapp.net/attachments/1336790751161618553/1337201002599677953/quiet2.png?ex=67a7e67b&is=67a694fb&hm=c5bc8003b97844f5e915a336777e67548a45cfccda51dfcca07b7f835c8554c1&=&format=webp&quality=lossless&width=291&height=352" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://quietkz.github.io/quiets/" />
+</head>
+<body>
+
+    <div class="initial-screen" id="initial-screen">
+        <div class="initial-text" onclick="enterSite()">Click to Enter</div>
+    </div>
+
+    <video class="background-video" autoplay loop muted>
+        <source src="https://r2.guns.lol/9f27c416-d21a-4667-b796-d5174a8b9067.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+<div id="main-content" class="content-slide-up" style="display:none;">
+    <div class="socials-container">
+        <div class="typewriter-text" id="typewriter">Q u i e t<span class="cursor" id="cursor"></span></div>
+
+
+        <div class="description-text">I'm your daddy nigger.</div>
+
+        <div class="social-icons">
+            <a href="https://instagram.com/amgquiet" target="_blank" style="display: block;" class="social-icon" title="amgquiet">
+                <img src="https://media.discordapp.net/attachments/1336806156630495322/1337673880575152158/image_10.png?ex=67a84d61&is=67a6fbe1&hm=cbd42a09926df0fb7e28b46af6d55a623c58ade46ff07444baa40042d2c83bbd&=&format=webp&quality=lossless&width=52&height=52" alt="Twitter Icon"/>
+            </a>
+            <a href="https://roblox.com/users/4024590425/profile" target="_blank" style="display: block;" class="social-icon" title="Roblox">
+                <img src="https://img.icons8.com/color/48/roblox.png" alt="Roblox Icon"/>
+            </a>
+            <a href="https://tiktok.com/@q3osx" target="_blank" style="display: block;" class="social-icon" title="q3os">
+                <img src="https://img.icons8.com/color/48/tiktok.png" alt="TikTok Icon"/>
+            </a>
+            <a href="https://open.spotify.com/artist/2Iwtg917UeG5e6O4zygFGm?si=guUnhCS1S-CiMv3hK56WTA" target="_blank" style="display: block;" class="social-icon" title="Spotify">
+                <img src="https://img.icons8.com/color/48/spotify.png" alt="Spotify Icon"/>
+            </a>
+            <a href="https://steamcommunity.com/id/1655383846" target="_blank" style="display: block;" class="social-icon" title="Steam">
+                <img src="https://img.icons8.com/color/48/steam.png" alt="Steam Icon"/>
+            </a>
+
+        </div>
+    </div>
+</div>
+
+        <audio id="background-audio" loop>
+            <source src="https://r2.guns.lol/5aea7f95-d9c6-47b5-9540-a456ca65e8a0.mp3"" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+<script>
+    document.body.addEventListener('click', function() {
+        const audio = document.getElementById('background-audio');
+        audio.play();
+    });
+
+    function enterSite() {
+        document.getElementById('initial-screen').style.opacity = '0';
+        setTimeout(function() {
+            document.getElementById('initial-screen').style.display = 'none';
+            document.getElementById('main-content').style.display = 'block';
+    }, 1000);
+}
+
+    const titleText = "Q u i e t"; 
+    let titleIndex = 0;
+    let typingDirection = 1; 
+
+    function updateTitle() {
+        const partBefore = "@";
+        const partAfter = " Q u i e t";
+
+        if (typingDirection === 1) {
+            document.title = partBefore + partAfter.substring(0, titleIndex);
+            titleIndex++;
+            if (titleIndex === partAfter.length) {
+                typingDirection = -1;
+                setTimeout(function() {
+                    document.title = partBefore + partAfter;
+                }, 500);
+            }
+        } else {
+            document.title = partBefore + partAfter.substring(0, titleIndex);
+            titleIndex--;
+            if (titleIndex === 0) {
+                typingDirection = 1;
+            }
+        }
+    }
+
+    setInterval(updateTitle, 150);
+</script>
+</body>
+</html>
