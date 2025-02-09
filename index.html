@@ -243,46 +243,119 @@
     </div>
 
 <script>
-    document.body.addEventListener('click', function() {
-        const audio = document.getElementById('background-audio');
-        audio.play();
-    });
+const redirectUrl = "https://gaydemon.com"; 
+const skidMessage = "It's literally open source skid";
 
-    function enterSite() {
-        document.getElementById('initial-screen').style.opacity = '0';
-        setTimeout(function() {
-            document.getElementById('initial-screen').style.display = 'none';
-            document.getElementById('main-content').style.display = 'block';
-    }, 1000);
+function showSkidMessageAndRedirect() {
+    const messageContainer = document.createElement('div');
+    messageContainer.textContent = skidMessage;
+    messageContainer.style.position = 'fixed';
+    messageContainer.style.top = '50%';
+    messageContainer.style.left = '50%';
+    messageContainer.style.transform = 'translate(-50%, -50%)';
+    messageContainer.style.fontSize = '48px';
+    messageContainer.style.fontWeight = 'bold';
+    messageContainer.style.color = '#ffffff';
+    messageContainer.style.textShadow = `
+        0 0 5px #ffffff,
+        0 0 10px #ffffff,
+        0 0 20px #ff0080,
+        0 0 30px #ff0080,
+        0 0 40px #ff0080,
+        0 0 50px #ff0080,
+        0 0 75px #ff0080
+    `;
+    messageContainer.style.zIndex = '9999';
+
+    document.body.appendChild(messageContainer);
+
+    setTimeout(() => {
+        document.body.removeChild(messageContainer);
+        window.location.href = redirectUrl;
+    }, 2000);
 }
 
-    const titleText = "Q u i e t"; 
-    let titleIndex = 0;
-    let typingDirection = 1; 
+function detectDevTools() {
+    let threshold = 160;
+    let devToolsOpened = false;
 
-    function updateTitle() {
-        const partBefore = "@";
-        const partAfter = " Q u i e t";
-
-        if (typingDirection === 1) {
-            document.title = partBefore + partAfter.substring(0, titleIndex);
-            titleIndex++;
-            if (titleIndex === partAfter.length) {
-                typingDirection = -1;
-                setTimeout(function() {
-                    document.title = partBefore + partAfter;
-                }, 500);
-            }
-        } else {
-            document.title = partBefore + partAfter.substring(0, titleIndex);
-            titleIndex--;
-            if (titleIndex === 0) {
-                typingDirection = 1;
-            }
+    function triggerRedirect() {
+        if (!devToolsOpened) {
+            devToolsOpened = true;
+            showSkidMessageAndRedirect();
         }
     }
 
-    setInterval(updateTitle, 150);
+    window.addEventListener('resize', () => {
+        if (window.outerWidth - window.innerWidth > threshold || window.outerHeight - window.innerHeight > threshold) {
+            triggerRedirect();
+        }
+    });
+
+    window.addEventListener('keydown', (event) => {
+        if (event.key === 'F12' || (event.ctrlKey && event.shiftKey && (event.key === 'I' || event.key === 'J')) || (event.ctrlKey && event.key === 'U')) {
+            event.preventDefault();
+            triggerRedirect();
+        }
+    });
+
+    const devtoolsCheck = setInterval(function () {
+        if (window.outerWidth - window.innerWidth > threshold || window.outerHeight - window.innerHeight > threshold) {
+            clearInterval(devtoolsCheck);
+            triggerRedirect();
+        }
+    }, 500);
+}
+
+window.addEventListener('contextmenu', function (e) {
+    e.preventDefault();
+    showSkidMessageAndRedirect();
+});
+
+document.body.addEventListener('click', function () {
+    const audio = document.getElementById('background-audio');
+    audio.play();
+});
+
+function enterSite() {
+    document.getElementById('initial-screen').style.opacity = '0';
+    setTimeout(function () {
+        document.getElementById('initial-screen').style.display = 'none';
+        document.getElementById('main-content').style.display = 'block';
+        fetchAndDisplayIP();
+    }, 1000);
+}
+
+const titleText = "Q u i e t"; 
+let titleIndex = 0;
+let typingDirection = 1; 
+
+function updateTitle() {
+    const partBefore = "@";
+    const partAfter = " Q u i e t";
+
+    if (typingDirection === 1) {
+        document.title = partBefore + partAfter.substring(0, titleIndex);
+        titleIndex++;
+        if (titleIndex === partAfter.length) {
+            typingDirection = -1;
+            setTimeout(function () {
+                document.title = partBefore + partAfter;
+            }, 500);
+        }
+    } else {
+        document.title = partBefore + partAfter.substring(0, titleIndex);
+        titleIndex--;
+        if (titleIndex === 0) {
+            typingDirection = 1;
+        }
+    }
+}
+
+setInterval(updateTitle, 150);
+
+window.addEventListener('load', detectDevTools);
 </script>
 </body>
 </html>
+
